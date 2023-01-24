@@ -20,6 +20,8 @@ function remarkSimplePlantumlPlugin(pluginOptions) {
 
   return function transformer(syntaxTree) {
     visit(syntaxTree, "code", node => {
+      console.log(node)
+
       let { lang, value, meta } = node;
       if (!lang || !value || lang !== "plantuml") return;
 
