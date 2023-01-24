@@ -26,6 +26,7 @@ function remarkSimplePlantumlPlugin(pluginOptions) {
       node.type = "image";
       node.url = `${options.baseUrl.replace(/\/$/, "")}/${plantumlEncoder.encode(value)}`;
       node.alt = meta;
+      node.class="bg-red";
       node.meta = undefined;
     });
     return syntaxTree;

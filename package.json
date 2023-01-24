@@ -1,7 +1,7 @@
 {
-  "name": "@akebifiky/remark-simple-plantuml",
-  "version": "1.0.2",
-  "description": "`remark-simple-plantuml` is a simple plugin for [remarkjs](https://github.com/remarkjs/remark) that converts PlantUML code written in Markdown to `img` tags.",
+  "name": "@unresolvedcold/remark-simple-plantuml",
+  "version": "1.0.0",
+  "description": "`@unresolvedcold/remark-simple-plantuml` is built on top of akebifiky/remark-simple-plantuml for personal use",
   "main": "./index.js",
   "scripts": {
     "test": "mocha",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/akebifiky/remark-simple-plantuml.git"
+    "url": "git+https://github.com/unresolvedcold/remark-simple-plantuml.git"
   },
   "author": "akebifiky",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/akebifiky/remark-simple-plantuml/issues"
+    "url": "https://github.com/unresolvedcold/remark-simple-plantuml/issues"
   },
-  "homepage": "https://github.com/akebifiky/remark-simple-plantuml#readme",
+  "homepage": "https://github.com/unresolvedcold/remark-simple-plantuml#readme",
   "keywords": [
     "remark",
     "plantuml"
