@@ -5,6 +5,13 @@ const DEFAULT_OPTIONS = {
   baseUrl: "https://www.plantuml.com/plantuml/png"
 };
 
+function replace(source, target) {
+  for (const property in source) {
+    delete source[property];
+  }
+
+  Object.assign(source, target);
+}
 /**
  * Plugin for remark-js
  *
@@ -18,19 +25,59 @@ const DEFAULT_OPTIONS = {
 function remarkSimplePlantumlPlugin(pluginOptions) {
   const options = { ...DEFAULT_OPTIONS, ...pluginOptions };
 
+  function getValuesFromMeta(meta){
+    var args={};
+    var match = meta.split(',').map(m=>m.trim());
+
+    for (var i=0; i<match.length; i++){
+      args[match[i].split('=')[0].trim()] = match[i].split('=')[1].trim()
+    }
+
+    return args
+  }
+
   return function transformer(syntaxTree) {
     visit(syntaxTree, "code", node => {
-      console.log(node)
-
       let { lang, value, meta } = node;
       if (!lang || !value || lang !== "plantuml") return;
 
+      args = getValuesFromMeta(meta);
+
+      value = "!includeurl " 
+            + (args["theme"] || "https://raw.githubusercontent.com/ptrkcsk/one-dark-plantuml-theme/main/theme.puml")
+            + "\n"
+            + value
+
       node.type = "image";
       node.url = `${options.baseUrl.replace(/\/$/, "")}/${plantumlEncoder.encode(value)}`;
-      node.alt = meta;
-      node.class="bg-red";
+      node.alt = args["alt"];
       node.meta = undefined;
+
+      node.data = { 
+            hProperties: {
+              "width": args["width"] || "80%",
+              "height": args["height"],
+              "style": "margin: auto;"
+            }, 
+          };
+
+      // const figureElement = {
+      //   type: "element",
+      //   data: { 
+      //     hName: "div",  
+      //     hProperties: {
+      //       "data-remark-code-title": true,
+      //       "data-language": node.lang,
+      //     }, 
+      //   },
+      //   // children: [imgElement],
+      // };
+
+      // replace(node, figureElement);
+      console.log('last mod',node)
+
     });
+    
     return syntaxTree;
   };
 }
