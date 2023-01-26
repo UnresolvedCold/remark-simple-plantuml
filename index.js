@@ -44,7 +44,7 @@ function remarkSimplePlantumlPlugin(pluginOptions) {
       args = getValuesFromMeta(meta);
 
       value = "!includeurl " 
-            + (args["theme"] || "https://raw.githubusercontent.com/ptrkcsk/one-dark-plantuml-theme/main/theme.puml")
+            + (args["theme"] || "https://gist.githubusercontent.com/UnresolvedCold/0763c0298a8be2349c56b6944d7542c9/raw/0551ad29c25d008f857c1f4abe3c25a4966e8eee/puml_theme.puml")
             + "\n"
             + value
 
