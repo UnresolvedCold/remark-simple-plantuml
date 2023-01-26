@@ -74,7 +74,6 @@ function remarkSimplePlantumlPlugin(pluginOptions) {
       // };
 
       // replace(node, figureElement);
-      console.log('last mod',node)
 
     });
     
